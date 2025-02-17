@@ -165,7 +165,7 @@ We'll use **Infrastructure as Code (IaC)** to automate OpenShift deployments.
    * Make sure that this pipeline only runs from the dev branch.
    * The token that we used before is only valid for 24 hours, so we usually don't use this for automation but it's OK for this task.
 8. Make a change in the openshift.yaml (update the replicas) and let the pipeline apply the changes.
-9.  Validate the changes via the UI or via the CLI.
+9. Validate the changes via the UI or via the CLI.
 
 ---
 
