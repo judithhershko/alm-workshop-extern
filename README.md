@@ -160,7 +160,7 @@ We'll use **Infrastructure as Code (IaC)** to automate OpenShift deployments.
    * `oc get routes` will show the routes & the urls from which you can connect
    * `oc apply -f infra/openshift.yaml` will deploy your application
 7. Automate this deployment process by modifying the `cd.yaml` pipeline.
-   * Remove the comments by `CTRL + A` + `CTRL + :`.
+   * Move the file from `.github/` to `.github/workflows/` so the pipeline will automatically be picked up by GitHub Actions.
    * Provide the correct secrets to login to the OpenShift cluster from your repository.
    * Make sure that this pipeline only runs from the dev branch.
    * The token that we used before is only valid for 24 hours, so we usually don't use this for automation but it's OK for this task.
