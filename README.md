@@ -74,16 +74,22 @@ We'll set up a **GitHub Actions pipeline** to automate the build process.
 
 #### **Steps**
 1. A pre-configured **GitHub Actions workflow** file is already available in `.github/workflows/ci.yaml` for this task.
-2. Modify the steps to **build** and **push** the container image to [**Quay.io**](https://quay.io/).
-3. Use a [**Robot Account**](https://docs.quay.io/glossary/robot-accounts.html) to authenticate with Quay.io.
-   * **HINT**: The image name should be as such `quay.io/<your-username>/alm-workshop` to properly push
-   * **HINT**: You might need to register the repository in quay first before you can push.
-   * **HINT**: How will you manage your quay Robot User password in the pipeline?
-4. Validate the deployment by pulling the container image and running it locally:
+2. Make sure you enable workflows on your GitHub Actions tab.
+   
+   ![Enable GitHub Workflows](docs/enable-workflow.png)
+
+3. Modify the steps to **build** and **push** the container image to [**Quay.io**](https://quay.io/).
+4. Use a [**Robot Account**](https://docs.quay.io/glossary/robot-accounts.html) to authenticate with Quay.io.
+   * **HINTS**: 
+     * The image name should be as such `quay.io/<your-username>/alm-workshop` to properly push
+     * You might need to register the repository in quay first before you can push.
+     * How will you manage your quay Robot User password in the pipeline?
+     * Does the robot account have enough permissions on the repository in quay?
+5. Validate the deployment by pulling the container image and running it locally:
     ```sh
     docker run -p 3000:3000 quay.io/<your-username>/alm-workshop:<tag>
     ```
-
+   * You can find the tag in your `quay.io` repository
 ---
 
 ### **Task 2: Implementing Semantic Versioning (SemVer)**
@@ -154,11 +160,12 @@ We'll use **Infrastructure as Code (IaC)** to automate OpenShift deployments.
    * `oc get routes` will show the routes & the urls from which you can connect
    * `oc apply -f infra/openshift.yaml` will deploy your application
 7. Automate this deployment process by modifying the `cd.yaml` pipeline.
+   * Remove the comments by `CTRL + A` + `CTRL + :`.
    * Provide the correct secrets to login to the OpenShift cluster from your repository.
    * Make sure that this pipeline only runs from the dev branch.
    * The token that we used before is only valid for 24 hours, so we usually don't use this for automation but it's OK for this task.
 8. Make a change in the openshift.yaml (update the replicas) and let the pipeline apply the changes.
-9. Validate the changes via the UI or via the CLI.
+9.  Validate the changes via the UI or via the CLI.
 
 ---
 

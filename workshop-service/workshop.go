@@ -14,7 +14,7 @@ type Workshop struct {
 
 var workshop = Workshop{
 	Name:         "ALM Workshop",
-	Date:         "14/02/2025",
+	Date:         "18/02/2025",
 	Presentator:  "AE Consultants",
 	Participants: []string{"John Doe", "Mary Little Lamb", "Chuck Norris"},
 }
