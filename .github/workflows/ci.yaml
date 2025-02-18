@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - "**" # Trigger on push to any branch
+  release:
+    types: [published]
+
 env:
   CONTAINER_REPOSITORY: quay.io/judithhershko1/ # PUT YOUR OWN USERNAME HERE
   CONTAINER_IMAGE: redhat_test
